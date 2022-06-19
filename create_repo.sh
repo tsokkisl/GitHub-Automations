@@ -6,7 +6,7 @@
 token=`cat .env | grep TOKEN= | cut -d '=' -f2`
 
 # Set current directory name as the repository name
-repository_name=`pwd | rev| cut -d '/' -f 1 | rev`
+repository_name=`pwd | rev | cut -d '/' -f 1 | rev`
 
 # Create remote repository and get origin
 origin=`curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token $token" -d '{"name": "'"$repository_name"'"}' https://api.github.com/user/repos | jq -r '.clone_url'`
